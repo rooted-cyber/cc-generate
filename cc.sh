@@ -83,8 +83,8 @@ fol() {
 			menu() {
 				banner
 				printf "\033[1;91m[\033[0m1\033[1;91m]\033[1;93m Generate Credit card using bin\n"
-				printf "\033[1;91m[\033[0m1\033[1;91m]\033[1;93m Checking Credit card\n"
-				printf "\033[1;91m[\033[0m1\033[1;91m]\033[1;93m Exit\n\n\n"
+				printf "\033[1;91m[\033[0m2\033[1;91m]\033[1;93m Checking Credit card\n"
+				printf "\033[1;91m[\033[0m3\033[1;91m]\033[1;93m Exit\n\n\n"
 				echo -e -n "\033[1;93m CC\033[0m@\033[1;92mGenerate\033[0m -->> "
 				read b
 				case $b in
@@ -112,5 +112,5 @@ fol() {
 		menu
 		fi
 		}
-		menu
+		set
 		
