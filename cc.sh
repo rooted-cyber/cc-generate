@@ -1,7 +1,17 @@
 fol() {
-	cd /sdcard/Termux/github/cc-generate
-	#cd ~/cc-generate
+	#cd /sdcard/Termux/github/cc-generate
+	cd ~/cc-generate
 	}
+random() {
+	cd $PREFIX/bin
+	if [ -e random ];then
+	echo
+	else
+	fol
+	bash random.sh
+	fi
+	}
+	
 	R() {
 		cd $PREFIX/bin
 		if [ -e python ];then
@@ -52,7 +62,7 @@ fol() {
 				
 				check() {
 					R
-					printf "\n https://localhost:3000 open in chrome \n"
+					printf "\n https://localhost:3000 open in chrome \n\n"
 					cd ~
 					cd cc-check-app
 					node server
@@ -61,23 +71,27 @@ fol() {
 			setup() {
 				apt update
 				apt upgrade
+				fol
 				mkdir deb
 				cd deb
 				apt download toilet
 				apt download python
 				apt download nodejs
 				dpkg -i *deb
-				apt install --fix -broken
+				apt install --fix-broken
 				dpkg --configure -a
-				fol
-				cp random $PREFIX/bin
-				chmod 777 $PREFIX/bin/random
+				
 				fol
 				cp cc.zip ~
 				cd ~
 				unzip cc.zip
 				cd cc-check-app
 				npm install
+				cd $PREFIX/bin
+				echo "#!/data/data/com.termux/files/home/usr/bin/sh" >> cg
+				echo "cd ~/cc-generate" >> cg
+				echo "bash cc.sh" >> cg
+				chmod 777 cg
 				}
 				
 			menu() {
@@ -101,10 +115,7 @@ fol() {
 		R
 		printf "\n Installing Requirements\n"
 		setup
-		echo "#!/data/data/com.termux/files/home/usr/bin/sh" >> cg
-		echo "cd ~/cc-generate" >> cg
-		echo "bash cc.sh" >> cg
-		chmod 777 cg
+		
 		R
 		printf "\n you can use : cg\n"
 		read
